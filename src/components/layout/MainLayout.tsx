@@ -1,28 +1,11 @@
-import { Layout, Menu, MenuProps } from 'antd';
+import { Layout, Menu } from 'antd';
+import { Outlet } from 'react-router-dom';
+import { adminSidebarItems } from '../../routes/admin.route';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Footer, Sider } = Layout;
 
 const MainLayout = () => {
-    const items: MenuProps["items"] = [
-        {
-            key: 1,
-            label: "Dashboard",
-        },
-        {
-            key: 2,
-            label: "User Management",
-            children: [
-                {
-                    key: 21,
-                    label: "Create User",
-                },
-                {
-                    key: 22,
-                    label: "Update User",
-                },
-            ]
-        },
-    ]
+   
     return (
     <Layout style={{height: "100vh"}}>
         <Sider
@@ -41,20 +24,11 @@ const MainLayout = () => {
                 >Ph Uni
                 </h1>
             </div>
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
+            <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={adminSidebarItems} />
         </Sider>
         <Layout>
             <Header style={{ padding: 0,  }} />
-            <Content style={{ margin: '24px 16px 0' }}>
-            <div
-                style={{
-                padding: 24,
-                minHeight: 360,
-                }}
-            >
-                content
-            </div>
-            </Content>
+            <Outlet/>
             <Footer style={{ textAlign: 'center' }}>
             Ant Design ©{new Date().getFullYear()} Created by Ant UED
             </Footer>
