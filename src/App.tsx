@@ -1,12 +1,13 @@
-
 import './App.css'
 import MainLayout from './components/layout/MainLayout'
+import { ProtectedLayout } from './components/layout/ProtectedLayout'
 
 function App() {
 
-
   return (
-    <MainLayout/>
+    <ProtectedLayout>
+       <MainLayout/>
+    </ProtectedLayout>
   )
 }
 

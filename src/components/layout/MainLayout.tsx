@@ -1,40 +1,38 @@
-import { Layout, Menu } from 'antd';
+import { Button, Layout } from 'antd';
+import Sidebar from './Sidebar';
+import { useAppDispatch } from '../../redux/hooks';
+// import { logout } from '../../redux/features/auth/authSlice';
 import { Outlet } from 'react-router-dom';
-import { adminSidebarItems } from '../../routes/admin.route';
-
-const { Header, Footer, Sider } = Layout;
+import { logOut } from '../../redux/features/auth/authSlice';
+const { Header, Content } = Layout;
 
 const MainLayout = () => {
-   
-    return (
-    <Layout style={{height: "100vh"}}>
-        <Sider
-            breakpoint="lg"
-            collapsedWidth="0"
-            onBreakpoint={(broken) => {
-            console.log(broken);
+  const dispatch = useAppDispatch();
+
+  const handleLogout = () => {
+    dispatch(logOut());
+  };
+
+  return (
+    <Layout style={{ height: '100%' }}>
+      <Sidebar />
+      <Layout>
+        <Header>
+          <Button onClick={handleLogout}>Logout</Button>{' '}
+        </Header>
+        <Content style={{ margin: '24px 16px 0' }}>
+          <div
+            style={{
+              padding: 24,
+              minHeight: 360,
             }}
-            onCollapse={(collapsed, type) => {
-            console.log(collapsed, type);
-            }}
-        >
-            <div className="demo-logo-vertical" >
-                <h1 
-                style={{color: "white", padding: "8px", fontSize:"1.5rem", display: "flex", justifyContent:"center", alignItems: "center"}}
-                >Ph Uni
-                </h1>
-            </div>
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={adminSidebarItems} />
-        </Sider>
-        <Layout>
-            <Header style={{ padding: 0,  }} />
-            <Outlet/>
-            <Footer style={{ textAlign: 'center' }}>
-            Ant Design ©{new Date().getFullYear()} Created by Ant UED
-            </Footer>
-        </Layout>
+          >
+            <Outlet />
+          </div>
+        </Content>
+      </Layout>
     </Layout>
-    );
+  );
 };
 
 export default MainLayout;

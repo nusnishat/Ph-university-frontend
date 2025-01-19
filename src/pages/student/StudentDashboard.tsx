@@ -1,6 +1,5 @@
 
-
-const CreateStudent = () => {
+const StudentDashboard = () => {
     return (
         <div>
             
@@ -8,4 +7,4 @@ const CreateStudent = () => {
     );
 };
 
-export default CreateStudent;
+export default StudentDashboard;
