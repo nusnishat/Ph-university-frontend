@@ -49,6 +49,7 @@ DefinitionType
 
 const baseApi = createApi({
   reducerPath: 'baseApi',
+  tagTypes: ['semester', 'courses'],
   baseQuery:baseQueryWithRefreshToken,
   endpoints: () => ({
   }),

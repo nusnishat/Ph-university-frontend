@@ -1,10 +1,6 @@
-import { 
-  TAcademicDepartment, 
-  TAcademicFaculty,
-  TAcademicSemester,
-} from '../../../components/types/academicManagement.type';
-import { TQueryParam, TResponseRedux } from '../../../components/types/global';
-import baseApi from '../../api/baseApi';
+import { TAcademicDepartment, TAcademicFaculty, TAcademicSemester } from "../../../components/types/academicManagement.type";
+import { TQueryParam, TResponseRedux } from "../../../components/types/global";
+import baseApi from "../../api/baseApi";
 
 
 const academicManagementApi = baseApi.injectEndpoints({
@@ -82,4 +78,5 @@ export const {
   useGetAllSemestersQuery,
   useAddAcademicSemesterMutation,
   useGetAcademicDepartmentsQuery,
+  useGetAcademicFacultiesQuery,
 } = academicManagementApi;
